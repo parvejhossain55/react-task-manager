@@ -49,7 +49,6 @@ function ForgootpassPage() {
                                 type="email"
                                 className="form-control"
                                 placeholder="Your Valid Email Address"
-                                defaultValue="parvejhossain4040@gmail.com"
                             />
                             <div className="input-group-append">
                                 <div className="input-group-text">
