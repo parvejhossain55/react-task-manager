@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { PostUserRegistration } from "../APIRequest/UserAPI";
 import { toastWarn } from "../helper/formHelper";
 import { useNavigate, NavLink } from "react-router-dom";
+import "../assets/css/ldbtn.min.css";
 
 function Registration() {
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ function Registration() {
         setTermChecked(checked);
     }
 
-    function userRegistration() {
+    function userRegistration(e) {
         if (!fname.value) {
             toastWarn("First Name is must be required");
         } else if (!lname.value) {
@@ -46,6 +47,8 @@ function Registration() {
                 confirmPassword: confpass.value,
             };
 
+            e.target.lastChild.classList.add("spinner-border");
+
             PostUserRegistration("/signup", data).then((res) => {
                 if (res === true) {
                     navigate("/login");
@@ -53,7 +56,6 @@ function Registration() {
                     navigate("/login");
                 }
             });
-            // console.log(data);
         }
     }
 
@@ -159,7 +161,7 @@ function Registration() {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-8">
+                            <div className="col-7">
                                 <div className="icheck-primary">
                                     <input
                                         onChange={checkHandler}
@@ -172,13 +174,21 @@ function Registration() {
                                     </label>
                                 </div>
                             </div>
-                            <div className="col-4">
+                            <div className="col-5">
                                 <button
                                     onClick={userRegistration}
-                                    className="btn btn-primary btn-block"
+                                    className="btn btn-primary"
                                     disabled={!termCheck ? true : false}
                                 >
                                     Register
+                                    <span
+                                        className=""
+                                        style={{
+                                            width: "15px",
+                                            height: "15px",
+                                            marginLeft: "8px",
+                                        }}
+                                    ></span>
                                 </button>
                             </div>
                         </div>

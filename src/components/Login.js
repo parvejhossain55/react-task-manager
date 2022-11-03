@@ -7,7 +7,7 @@ function Login() {
     let email,
         password = useRef();
 
-    function UserSignup() {
+    function UserSignup(e) {
         if (!email.value) {
             toastWarn("Email address is required");
         } else if (!password.value) {
@@ -17,6 +17,8 @@ function Login() {
                 email: email.value,
                 password: password.value,
             };
+            e.target.lastChild.classList.add("spinner-border");
+
             LoginUser("/login", data).then((res) => {
                 if (res === true) {
                     window.location.href = "/";
@@ -68,7 +70,7 @@ function Login() {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-8">
+                            <div className="col-7">
                                 <div className="icheck-primary">
                                     <input type="checkbox" id="remember" />
                                     <label htmlFor="remember">
@@ -76,12 +78,20 @@ function Login() {
                                     </label>
                                 </div>
                             </div>
-                            <div className="col-4">
+                            <div className="col-5">
                                 <button
                                     onClick={UserSignup}
                                     className="btn btn-primary btn-block"
                                 >
                                     Sign In
+                                    <span
+                                        className=""
+                                        style={{
+                                            width: "15px",
+                                            height: "15px",
+                                            marginLeft: "8px",
+                                        }}
+                                    ></span>
                                 </button>
                             </div>
                         </div>

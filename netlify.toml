@@ -1,5 +1,4 @@
-# A basic redirect rule
 [[redirects]]
-   from = "/*"
-   to = "/"
-   status = 200
+  from = "/*"
+  to = "/"
+  status = 200
