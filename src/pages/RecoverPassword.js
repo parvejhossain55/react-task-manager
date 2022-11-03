@@ -16,7 +16,7 @@ function RecoverPassword() {
             toastWarn("Please type new password");
         } else if (!repass.value) {
             toastWarn("Please re-type confirm password");
-        } else if (pass.value != repass.value) {
+        } else if (pass.value !== repass.value) {
             toastWarn("Does not match password and confirm password");
         } else {
             const data = {

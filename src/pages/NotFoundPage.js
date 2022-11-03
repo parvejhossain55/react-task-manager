@@ -1,5 +1,4 @@
 import React from "react";
-import { getToken } from "../helper/sessionHelper";
 
 function NotFoundPage() {
     // if (!getToken()) {

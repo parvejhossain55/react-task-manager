@@ -22,7 +22,7 @@ function Create() {
                 taskDesc: taskdesc.value,
             };
             CreateTask("/tasks", data).then((res) => {
-                if (res == true) {
+                if (res === true) {
                     store.dispatch(hideLoader());
                     toastSuccess("Task Successfully Created");
                     navigate("/");

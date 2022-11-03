@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { ProfileUpdate, setUserInfoById } from "../APIRequest/UserAPI";
 import profileImg from "../assets/img/profile.jpg";
@@ -46,7 +46,7 @@ function Profile() {
                 getUserDetail().password
             );
 
-            if (checkPass != false) {
+            if (checkPass !== false) {
                 const data = {
                     _id: id,
                     firstName: fname.value,
@@ -142,6 +142,7 @@ function Profile() {
                                     </label>
                                     <div>
                                         <img
+                                            alt="asjflskd"
                                             id="profile"
                                             src={
                                                 userdata[0]?.image
