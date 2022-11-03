@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { NavLink } from "react-router-dom";
 import { LoginUser } from "../APIRequest/UserAPI";
 import { toastWarn } from "../helper/formHelper";
 
@@ -30,9 +31,9 @@ function Login() {
         <div className="hold-transition login-page">
             <div className="login-box">
                 <div className="login-logo">
-                    <a href="javscript:void(0)">
+                    <p>
                         <b>Task Manager</b>
-                    </a>
+                    </p>
                 </div>
                 <div className="card">
                     <div className="card-body login-card-body">
@@ -46,7 +47,6 @@ function Login() {
                                 type="email"
                                 className="form-control"
                                 placeholder="Email"
-                                defaultValue="parvejhossain4040@gmail.com"
                             />
                             <div className="input-group-append">
                                 <div className="input-group-text">
@@ -60,7 +60,6 @@ function Login() {
                                 type="password"
                                 className="form-control"
                                 placeholder="Password"
-                                defaultValue="1111"
                             />
                             <div className="input-group-append">
                                 <div className="input-group-text">
@@ -100,12 +99,14 @@ function Login() {
                         </div>
 
                         <p className="mb-1">
-                            <a href="/forgotpass">I forgot my password</a>
+                            <NavLink to="/forgotpass">
+                                I forgot my password
+                            </NavLink>
                         </p>
                         <p className="mb-0">
-                            <a href="/register" className="text-center">
+                            <NavLink to="/register" className="text-center">
                                 Register a new membership
-                            </a>
+                            </NavLink>
                         </p>
                     </div>
                 </div>

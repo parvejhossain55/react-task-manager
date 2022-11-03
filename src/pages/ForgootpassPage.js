@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { sendVerificationCodeByEmail } from "../APIRequest/UserAPI";
 import { toastWarn } from "./../helper/formHelper";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function ForgootpassPage() {
     const navigate = useNavigate();
@@ -16,10 +17,10 @@ function ForgootpassPage() {
             toastWarn("Invalid email address");
         } else {
             sendVerificationCodeByEmail(email.value).then((res) => {
-                if(res === true) {
-                    navigate('/verifycode')
+                if (res === true) {
+                    navigate("/verifycode");
                 } else {
-                    navigate('/forgotpass')
+                    navigate("/forgotpass");
                 }
             });
         }
@@ -32,9 +33,9 @@ function ForgootpassPage() {
         >
             <div className="login-box">
                 <div className="login-logo">
-                    <a href="#">
-                        <b>Admin</b>LTE
-                    </a>
+                    <p>
+                        <b>Task Manager</b>
+                    </p>
                 </div>
                 <div className="card">
                     <div className="card-body login-card-body">
@@ -68,12 +69,12 @@ function ForgootpassPage() {
                         </div>
 
                         <p className="mt-3 mb-1">
-                            <a href="/login">Login</a>
+                            <NavLink to="/login">Login</NavLink>
                         </p>
                         <p className="mb-0">
-                            <a href="/register" className="text-center">
+                            <NavLink to="/register" className="text-center">
                                 Register a new membership
-                            </a>
+                            </NavLink>
                         </p>
                     </div>
                 </div>

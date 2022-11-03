@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { PostUserRegistration } from "../APIRequest/UserAPI";
 import { toastWarn } from "../helper/formHelper";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 function Registration() {
     const navigate = useNavigate();
@@ -50,7 +50,7 @@ function Registration() {
                 if (res === true) {
                     navigate("/login");
                 } else {
-                    navigate('/login')
+                    navigate("/login");
                 }
             });
             // console.log(data);
@@ -61,9 +61,9 @@ function Registration() {
         <div className="hold-transition register-page">
             <div className="register-box">
                 <div className="register-logo">
-                    <a href="javascrit:void(0)">
-                        <b>Admin</b>LTE
-                    </a>
+                    <p>
+                        <b>Task Manager</b>
+                    </p>
                 </div>
 
                 <div className="card">
@@ -186,19 +186,25 @@ function Registration() {
 
                         <div className="social-auth-links text-center">
                             <p>- OR -</p>
-                            <a href="#" className="btn btn-block btn-primary">
+                            <NavLink
+                                to="#"
+                                className="btn btn-block btn-primary"
+                            >
                                 <i className="fab fa-facebook mr-2"></i>
                                 Sign up using Facebook
-                            </a>
-                            <a href="#" className="btn btn-block btn-danger">
+                            </NavLink>
+                            <NavLink
+                                to="#"
+                                className="btn btn-block btn-danger"
+                            >
                                 <i className="fab fa-google-plus mr-2"></i>
                                 Sign up using Google+
-                            </a>
+                            </NavLink>
                         </div>
 
-                        <a href="/login" className="text-center">
+                        <NavLink to="/login" className="text-center">
                             I already have a membership
-                        </a>
+                        </NavLink>
                     </div>
                 </div>
             </div>
