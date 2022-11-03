@@ -51,6 +51,7 @@ function Registration() {
 
             PostUserRegistration("/signup", data).then((res) => {
                 if (res === true) {
+                    e.target.lastChild.classList.remove("spinner-border");
                     navigate("/login");
                 } else {
                     navigate("/login");
