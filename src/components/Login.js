@@ -23,6 +23,7 @@ function Login() {
                 if (res === true) {
                     window.location.href = "/";
                 } else {
+                    e.target.lastChild.classList.remove("spinner-border");
                     toastWarn("Invalid Email or Password");
                 }
             });
