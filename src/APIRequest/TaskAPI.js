@@ -10,12 +10,14 @@ import {
 } from "../redux/state/taskSlice";
 import store from "../redux/store/store";
 
+const base = "https://frightened-lamb-fez.cyclic.app/api/v1";
+
 const axiosHeader = {
     headers: { Authorization: "Bearer " + getToken() },
 };
 
 export async function CreateTask(url, data) {
-    let baseURL = "https://simple-task-managerr.herokuapp.com/api/v1" + url;
+    let baseURL = base + "/" + url;
     return await axios
         .post(baseURL, { ...data, user: getUserDetail()._id }, axiosHeader)
         .then((res) => {
@@ -36,10 +38,7 @@ export async function CreateTask(url, data) {
 }
 
 export async function selectTaskByStatus(Status) {
-    let baseURL =
-        "https://simple-task-managerr.herokuapp.com/api/v1/tasks/" +
-        Status +
-        "/status";
+    let baseURL = base + "/tasks/" + Status + "/status";
 
     return await axios
         .get(baseURL, axiosHeader)
@@ -68,8 +67,7 @@ export async function selectTaskByStatus(Status) {
 }
 
 export async function selectTaskCount() {
-    let baseURL =
-        "https://simple-task-managerr.herokuapp.com/api/v1/tasks/count";
+    let baseURL = base + "/tasks/count";
 
     return await axios
         .get(baseURL, axiosHeader)
@@ -89,8 +87,7 @@ export async function selectTaskCount() {
 }
 
 export async function deleteTaskById(id) {
-    let baseURL =
-        "https://simple-task-managerr.herokuapp.com/api/v1/tasks/" + id;
+    let baseURL = base + "/tasks/" + id;
 
     return await axios
         .delete(baseURL, axiosHeader)
@@ -110,8 +107,7 @@ export async function deleteTaskById(id) {
 }
 
 export async function updateTaskByStatus(id, task) {
-    let baseURL =
-        "https://simple-task-managerr.herokuapp.com/api/v1/tasks/" + id;
+    let baseURL = base + "/tasks/" + id;
 
     return await axios
         .put(baseURL, task, axiosHeader)

@@ -14,9 +14,11 @@ const axiosHeader = {
     headers: { Authorization: "Bearer " + getToken() },
 };
 
+const base = "https://frightened-lamb-fez.cyclic.app/api/v1";
+
 export async function PostUserRegistration(url, data) {
     store.dispatch(showLoader);
-    let baseURL = "https://simple-task-managerr.herokuapp.com/api/v1" + url;
+    let baseURL = base + url;
     return await axios
         .post(baseURL, data)
         .then((res) => {
@@ -44,8 +46,7 @@ export async function PostUserRegistration(url, data) {
 
 export async function setUserInfoById(id) {
     // store.dispatch(showLoader);
-    let baseURL =
-        "https://simple-task-managerr.herokuapp.com/api/v1/user/" + id;
+    let baseURL = base + "/user/" + id;
     return await axios
         .get(baseURL)
         .then((res) => {
@@ -67,7 +68,7 @@ export async function setUserInfoById(id) {
 export async function LoginUser(url, data) {
     store.dispatch(showLoader);
 
-    let baseURL = "https://simple-task-managerr.herokuapp.com/api/v1" + url;
+    let baseURL = base + url;
 
     return await axios
         .post(baseURL, data)
@@ -90,8 +91,7 @@ export async function LoginUser(url, data) {
 
 export async function ProfileUpdate(id, data) {
     store.dispatch(showLoader);
-    let baseURL =
-        "https://simple-task-managerr.herokuapp.com/api/v1/profileUpdate/" + id;
+    let baseURL = base + "/profileUpdate/" + id;
     return await axios
         .put(baseURL, data, axiosHeader)
         .then((res) => {
@@ -112,12 +112,12 @@ export async function ProfileUpdate(id, data) {
 }
 
 export async function sendVerificationCodeByEmail(email) {
-    let baseURL =
-        "https://simple-task-managerr.herokuapp.com/api/v1/user/forgot/" +
-        email;
+    let baseURL = base + "/user/forgot/" + email;
     return await axios
         .get(baseURL)
         .then((res) => {
+            console.log(email);
+            console.log(res);
             if (res.data.data.accepted.length === 1) {
                 setVerifyEmail(email);
                 return true;
@@ -126,6 +126,7 @@ export async function sendVerificationCodeByEmail(email) {
             }
         })
         .catch((error) => {
+            console.log(error);
             if (error) {
                 toastWarn("Your Email Does Not Found");
             }
@@ -133,8 +134,7 @@ export async function sendVerificationCodeByEmail(email) {
 }
 
 export async function userCodeVerify(data) {
-    let baseURL =
-        "https://simple-task-managerr.herokuapp.com/api/v1/user/verifycode";
+    let baseURL = base + "/user/verifycode";
     return await axios
         .post(baseURL, data)
         .then((res) => {
@@ -154,15 +154,14 @@ export async function userCodeVerify(data) {
 }
 
 export async function UpdateUserPassword(data) {
-    let baseURL =
-        "https://simple-task-managerr.herokuapp.com/api/v1/user/changePassword";
+    let baseURL = base + "/user/changePassword";
     return await axios
         .post(baseURL, data)
         .then((res) => {
-            if (res.status === 200 && res.data.status === 'success') {
-                return true
+            if (res.status === 200 && res.data.status === "success") {
+                return true;
             } else {
-                return false
+                return false;
             }
         })
         .catch((error) => {
